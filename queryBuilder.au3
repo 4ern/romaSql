@@ -861,35 +861,35 @@ endfunc
 ; Source.........: http://www.w3schools.com/sql/sql_having.asp
 ; ===============================================================================================================================
 func __4ern_SQL_Query_having($COLM,$V1 = DEFAULT, $V2 = DEFAULT)
-	$ret = func __4ern_SQL_Query_where($COLM,$V1, $V2, 'AND', 'HAVING')
+	$ret = __4ern_SQL_Query_where($COLM,$V1, $V2, 'AND', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 func __4ern_SQL_Query_orHaving($COLM,$V1 = DEFAULT, $V2 = DEFAULT)
-	$ret = func __4ern_SQL_Query_where($COLM,$V1, $V2, 'OR', 'HAVING')
+	$ret = __4ern_SQL_Query_where($COLM,$V1, $V2, 'OR', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 func __4ern_SQL_Query_havingBetween($COLM, $V1 = DEFAULT, $V2 = DEFAULT)
-	$ret = func __4ern_SQL_Query_whereBetween($COLM,$V1, $V2, 'BETWEEN', 'HAVING')
+	$ret = __4ern_SQL_Query_whereBetween($COLM,$V1, $V2, 'BETWEEN', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 func __4ern_SQL_Query_havingNotBetween($COLM, $V1 = DEFAULT, $V2 = DEFAULT)
-	$ret = func __4ern_SQL_Query_whereBetween($COLM,$V1, $V2, 'NOT BETWEEN', 'HAVING')
+	$ret = __4ern_SQL_Query_whereBetween($COLM,$V1, $V2, 'NOT BETWEEN', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 func __4ern_SQL_Query_havingIn($COLM, $V1 = DEFAULT, $V2 = DEFAULT)
-	$ret = func __4ern_SQL_Query_whereIn($COLM,$V1, $V2, 'IN', 'HAVING')
+	$ret = __4ern_SQL_Query_whereIn($COLM,$V1, $V2, 'IN', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 func __4ern_SQL_Query_havingNotIn($COLM, $V1 = DEFAULT, $V2 = DEFAULT)
-	$ret = func __4ern_SQL_Query_whereIn($COLM,$V1, $V2, 'NOT IN', 'HAVING')
+	$ret = __4ern_SQL_Query_whereIn($COLM,$V1, $V2, 'NOT IN', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 func __4ern_SQL_Query_havingNull($COLM)
-	$ret = func __4ern_SQL_Query_whereNull($COLM, 'IS NULL', 'HAVING')
+	$ret = __4ern_SQL_Query_whereNull($COLM, 'IS NULL', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 func __4ern_SQL_Query_havingNotNull($COLM)
-	$ret = func __4ern_SQL_Query_whereNull($COLM, 'IS NOT NULL', 'HAVING')
+	$ret = __4ern_SQL_Query_whereNull($COLM, 'IS NOT NULL', 'HAVING')
 	return SetError(@error, 0, $ret)
 endfunc
 
@@ -1013,7 +1013,7 @@ func __4ern_SQL_Query_orderBy($COLM,$V1='asc')
 	; Prüfe ob ein valider Sortier wert eingegeben wurde
 	;----------------------------------------------------------------------------------------------/
 	if StringRegExp($V1, '(asc|desc)') = 0 then
-		__4ern_SQL_Console('error', 'ORDER BY -- QUERY BUILDER', StringFormat('(%s) ist valider ORDER BY Keyword', $C1))
+		__4ern_SQL_Console('error', 'ORDER BY -- QUERY BUILDER', StringFormat('(%s) ist kein valider ORDER BY Keyword', $V1))
 		return SetError(1, 0, 0)
 	endif
 
