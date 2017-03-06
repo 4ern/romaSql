@@ -303,7 +303,7 @@ func __4ern_SQL_Query_table($COLM = DEFAULT,$C1=DEFAULT,$C2=DEFAULT,$C3=DEFAULT,
 	;----------------------------------------------------------------------------------------------/
 	; Param to Array
 	;----------------------------------------------------------------------------------------------/
-	$aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
+	Local $aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
 	for $param in $aParam
 		if $param <> default then __4ern_SQL__QueryBuilder__table(-1,$param)
 	next
@@ -485,7 +485,7 @@ func __4ern_SQL_Query_select($COLM,$C1=DEFAULT,$C2=DEFAULT,$C3=DEFAULT,$C4=DEFAU
 	;----------------------------------------------------------------------------------------------/
 	; Param to Array
 	;----------------------------------------------------------------------------------------------/
-	$aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
+	Local $aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
 	for $param in $aParam
 		if $param <> default then __4ern_SQL__QueryBuilder__SELECT(-1,$param)
 	next
@@ -512,7 +512,7 @@ func __4ern_SQL_Query_distinct($COLM,$C1=DEFAULT,$C2=DEFAULT,$C3=DEFAULT,$C4=DEF
 	;----------------------------------------------------------------------------------------------/
 	; Param to Array
 	;----------------------------------------------------------------------------------------------/
-	$aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
+	Local $aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
 	for $param in $aParam
 		if $param <> default then __4ern_SQL__QueryBuilder__SELECT(-1,$param, 'DISTINCT')
 	next
@@ -1030,7 +1030,6 @@ endfunc
 ; Description....: Table DEFAULT Settings
 ; ===============================================================================================================================
 func __4ern_SQL__QueryBuilder__setTable($P_TABLE = DEFAULT, $P_TKEY = DEFAULT, $ACTION = 'set')
-	
 	Local Static $S_table
 	Local Static $S_tKey
 
@@ -1038,13 +1037,11 @@ func __4ern_SQL__QueryBuilder__setTable($P_TABLE = DEFAULT, $P_TKEY = DEFAULT, $
 		Case 'set'
 			If not __4ern_SQL__IsDefault($P_TABLE, '-1,', ',') Then $S_table = $P_TABLE
 			If not __4ern_SQL__IsDefault($P_TKEY, '-1,', ',') Then $S_tKey   = $P_TKEY
-	
 		;----------------------------------------------------------------------------------------------/
 		; Tabelle übergeben.
 		;----------------------------------------------------------------------------------------------/
 		Case 'getTable'
 			If not __4ern_SQL__IsDefault($S_table, '-1,', ',') Then 
-				$S_table = DEFAULT
 				return $S_table
 			endif
 			__4ern_SQL_Console('error', 'SQL Table', 'Es wurde keine Tabelle ausgewaehlt')

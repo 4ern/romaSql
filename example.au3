@@ -1,44 +1,28 @@
 #include 'romaSql.au3'
 #include <Array.au3>
 
-
-Local $aSelect = [['Artist','adele'],['Votes', '>=' ,'9']]
-If IsArray($aSelect) Then
-	_ArrayDisplay($aSelect, 'Debug Array Line 5')
-Else
-	ConsoleWrite('Error Line 5: "$aSelect" isnt an array' & @LF)
-EndIf
-
-exit
 ;-----/
-; SQLite Connection
+; SQLite Connection + Settings
 ;-----/
 $SQL_setDatabase('sqlite')
-$SQL_connect('C:\project.db')
+$SQL_connect(@scriptdir & '\chinook.db')
+$SQL_setDefaultTable('customers')
+$SQL_debug()
 
 ;-----/
-; Access Connection
-; Database, User, Password
+; Get Customers
 ;-----/
-$SQL_setDatabase('access')
-$SQL_connect('C:\project.mdb')
-;or as Admin
-$SQL_connect('C:\project.mdb', '4ern', 'root')
+$SQL_table('customers')
+	$SQL_where('country', 'Germany')
+	$SQL_orWhere('country', 'France')
+	$SQL_whereNotNull('email')
+	$SQL_orderBy('country', 'desc')
+$aCustomers = $SQL_get()
 
-;-----/
-; SQLServer Connection
-; Database, User, Password, Server, Driver
-;-----/
-$SQL_setDatabase('sqlserver')
-$SQL_connect('myDB', '4ern', 'root', 'localhost')
-;or with Driver
-$SQL_connect('myDB', '4ern', 'root', 'localhost', 'SQL Server')
 
-;-----/
-; MySQL Connection
-; Database, User, Password, Server, Driver
-;-----/
-$SQL_setDatabase('mysql')
-$SQL_connect('myDB', '4ern', 'root', 'localhost')
-;or with Driver
-$SQL_connect('myDB', '4ern', 'root', 'localhost', 'MySQL ODBC 5.2 UNICODE Driver')
+
+If IsArray($aCustomers) Then
+	_ArrayDisplay($aCustomers, 'Debug Array Line 16')
+Else
+	ConsoleWrite('Error Line 16: "$aCustomers" isnt an array' & @LF)
+EndIf
