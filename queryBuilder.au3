@@ -1,13 +1,5 @@
 #include-once
-; #FUNCTION# ====================================================================================================================
-; Author ........: 4ern.de
-; Description....: AU3 Check Syntax
-; Source.........: romaSql.au3
-; ===============================================================================================================================
-#ignorefunc __4ern_SQL_Connection 
-#ignorefunc __4ern_SQL_rawQuery 
-#ignorefunc __4ern_SQL_Console 
-#ignorefunc __4ern_SQL__IsDefault
+#include 'romaSql.au3'
 
 ; #FUNCTION# ====================================================================================================================
 ; Author ........: 4ern.de
@@ -307,15 +299,14 @@ func __4ern_SQL_Query_table($COLM = DEFAULT,$C1=DEFAULT,$C2=DEFAULT,$C3=DEFAULT,
 	; Übergabe der Parameter an QueryBuilder
 	;----------------------------------------------------------------------------------------------/
 	__4ern_SQL__QueryBuilder__table(-1,$COLM)
-	IF $C1 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C1)
-	IF $C2 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C2)
-	IF $C3 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C3)
-	IF $C4 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C4)
-	IF $C5 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C5)
-	IF $C6 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C6)
-	IF $C7 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C7)
-	IF $C8 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C8)
-	IF $C9 <> DEFAULT then __4ern_SQL__QueryBuilder__table(-1,$C9)
+
+	;----------------------------------------------------------------------------------------------/
+	; Param to Array
+	;----------------------------------------------------------------------------------------------/
+	$aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
+	for $param in $aParam
+		if $param <> default then __4ern_SQL__QueryBuilder__table(-1,$param)
+	next
 
 	return 1
 endfunc
@@ -490,15 +481,14 @@ func __4ern_SQL_Query_select($COLM,$C1=DEFAULT,$C2=DEFAULT,$C3=DEFAULT,$C4=DEFAU
 	; Übergabe der Parameter an QueryBuilder
 	;----------------------------------------------------------------------------------------------/
 	__4ern_SQL__QueryBuilder__SELECT(-1,$COLM)
-	IF $C1 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C1)
-	IF $C2 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C2)
-	IF $C3 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C3)
-	IF $C4 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C4)
-	IF $C5 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C5)
-	IF $C6 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C6)
-	IF $C7 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C7)
-	IF $C8 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C8)
-	IF $C9 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C9)
+
+	;----------------------------------------------------------------------------------------------/
+	; Param to Array
+	;----------------------------------------------------------------------------------------------/
+	$aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
+	for $param in $aParam
+		if $param <> default then __4ern_SQL__QueryBuilder__SELECT(-1,$param)
+	next
 
 	return 1
 endfunc
@@ -517,16 +507,16 @@ func __4ern_SQL_Query_distinct($COLM,$C1=DEFAULT,$C2=DEFAULT,$C3=DEFAULT,$C4=DEF
 	;----------------------------------------------------------------------------------------------/
 	; Übergabe der Parameter an QueryBuilder
 	;----------------------------------------------------------------------------------------------/
-		__4ern_SQL__QueryBuilder__SELECT(-1,$COLM, 'DISTINCT')
-		IF $C1 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C1, 'DISTINCT')
-		IF $C2 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C2, 'DISTINCT')
-		IF $C3 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C3, 'DISTINCT')
-		IF $C4 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C4, 'DISTINCT')
-		IF $C5 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C5, 'DISTINCT')
-		IF $C6 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C6, 'DISTINCT')
-		IF $C7 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C7, 'DISTINCT')
-		IF $C8 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C8, 'DISTINCT')
-		IF $C9 <> DEFAULT then __4ern_SQL__QueryBuilder__SELECT(-1,$C9, 'DISTINCT')
+	__4ern_SQL__QueryBuilder__SELECT(-1,$COLM, 'DISTINCT')
+	
+	;----------------------------------------------------------------------------------------------/
+	; Param to Array
+	;----------------------------------------------------------------------------------------------/
+	$aParam = [$C1,$C2,$C3,$C4,$C5,$C6,$C7,$C8,$C9]
+	for $param in $aParam
+		if $param <> default then __4ern_SQL__QueryBuilder__SELECT(-1,$param, 'DISTINCT')
+	next
+
 
 	return 1
 endfunc

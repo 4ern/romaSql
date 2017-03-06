@@ -1,3 +1,4 @@
+#include-once
 #include <Array.au3>
 #include 'queryBuilder.au3'
 
@@ -119,41 +120,6 @@
 	$SQL_groupBy          = __4ern_SQL__QueryBuilder__groupBy
 	$SQL_orderBy          = __4ern_SQL_Query_orderBy
 	$SQL_raw			  = __4ern_SQL_rawQueryExpr
-	
-; #FUNCTION# ====================================================================================================================
-; Author ........: 4ern.de
-; Description....: AU3 Check Syntax
-; Source.........: queryBuilder.au3
-; ===============================================================================================================================
-	#ignorefunc __4ern_SQL__QueryBuilder__setTable
-	#ignorefunc __4ern_SQL__QueryBuilder__setkey
-	#ignorefunc __4ern_SQL_QueryBuilder_get
-	#ignorefunc __4ern_SQL_QueryBuilder_Update
-	#ignorefunc __4ern_SQL_QueryBuilder_Delete
-	#ignorefunc __4ern_SQL_Query_insert
-	#ignorefunc __4ern_SQL__QueryBuilder__limit
-	#ignorefunc __4ern_SQL_Query_table
-	#ignorefunc __4ern_SQL_Query_select
-	#ignorefunc __4ern_SQL_Query_distinct
-	#ignorefunc __4ern_SQL_Query_where
-	#ignorefunc __4ern_SQL_Query_orWhere
-	#ignorefunc __4ern_SQL_Query_whereBetween
-	#ignorefunc __4ern_SQL_Query_whereNotBetween
-	#ignorefunc __4ern_SQL_Query_whereIn
-	#ignorefunc __4ern_SQL_Query_whereNotIn
-	#ignorefunc __4ern_SQL_Query_whereNull
-	#ignorefunc __4ern_SQL_Query_whereNotNull
-	#ignorefunc __4ern_SQL_Query_having
-	#ignorefunc __4ern_SQL_Query_orHaving
-	#ignorefunc __4ern_SQL_Query_havingBetween
-	#ignorefunc __4ern_SQL_Query_havingNotBetween
-	#ignorefunc __4ern_SQL_Query_havingIn
-	#ignorefunc __4ern_SQL_Query_havingNotIn
-	#ignorefunc __4ern_SQL_Query_havingNull
-	#ignorefunc __4ern_SQL_Query_havingNotNull
-	#ignorefunc __4ern_SQL__QueryBuilder__groupBy
-	#ignorefunc __4ern_SQL_Query_orderBy
-	#ignorefunc __4ern_SQL_rawQueryExpr
 
 ; #FUNCTION# ====================================================================================================================
 ; Author ........: 4ern.de
